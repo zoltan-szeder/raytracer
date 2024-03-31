@@ -6,4 +6,5 @@ To build the raytracer simply run
 make build
 ```
 It will generate a `raytracer` executable. When run, it will generate the following image pixel by pixel using OpenGL.
+
 ![image](raytracer.png)
