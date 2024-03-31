@@ -2,10 +2,8 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 
-#define _USE_MATH_DEFINES
 #include <math.h>
 #include <stdlib.h>
-
 
 #define ZERO 0.0001
 
