@@ -1,19 +1,18 @@
-struct Diffuse : Material {
-  Color c;
+#include "Diffuse.hpp"
 
-  Diffuse( const Color& c0 )
+Diffuse::Diffuse(const Color& c0) {
+  c = c0;
+}
+
+Color Diffuse::bounce(const Intersection& in, Light** lights, const int s) {
+  Color color;
+
+  for(int i = 0; i < s; i++)
   {
-    c = c0;
+    Lightning l = lights[i]->light(in);
+    color += c*l.a + c*l.d;
   }
 
-  Color bounce( const Intersection& in, Light** lights, const int s )
-  {
-    Color color;
-    for( int i = 0; i < s; i++ )
-    {
-      Lightning l = lights[i]->light( in );
-      color += c*l.a + c*l.d;
-    }
-    return color.saturate( 0, 1 );
-  }
-};
+  return color.saturate(0, 1);
+}
+
