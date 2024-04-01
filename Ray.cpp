@@ -1,22 +1,21 @@
-struct Ray
-{
-public:
-  Vector p;
-  Vector v;
+#include "Ray.hpp"
 
-  Ray( const Vector& p0, const Vector& v0 )
-  {
-    p = p0;
-    v = v0;
-  }
+Ray::Ray(const Vector& p0, const Vector& v0) {
+  p = p0;
+  v = v0;
+}
 
-  Ray convert( Vector* vec )
-  {
-    return Ray( vec->convert( &p ), vec->convertdir( &v ) );
-  }
+Ray Ray::convert(Vector* vec) {
+  return Ray(
+    vec->convert(&p),
+    vec->convertdir(&v)
+  );
+}
 
-  Ray deconvert( Vector* vec )
-  {
-    return Ray( vec->deconvert( &p ), vec->deconvertdir( &v ) );
-  }
-};
+Ray Ray::deconvert(Vector* vec) {
+  return Ray(
+    vec->deconvert(&p),
+    vec->deconvertdir(&v)
+  );
+}
+
