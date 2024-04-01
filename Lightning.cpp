@@ -1,12 +1,7 @@
-struct Lightning {
-  Color a;
-  Color d;
-  Color s;
+#include "Lightning.hpp"
 
-  Lightning( const Color& a0, const Color& d0, const Color& s0 )
-  {
-    a = a0;
-    d = d0;
-    s = s0;
-  }
-};
+Lightning::Lightning(const Color& a0, const Color& d0, const Color& s0) {
+  a = a0;
+  d = d0;
+  s = s0;
+}
