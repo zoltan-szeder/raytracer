@@ -12,7 +12,7 @@
 #include "Intersection.cpp"
 #include "Ray.cpp"
 #include "Lightning.cpp"
-#include "Light.cpp"
+#include "Light.hpp"
 #include "Material.cpp"
 #include "Object.cpp"
 #include "Model.cpp"
