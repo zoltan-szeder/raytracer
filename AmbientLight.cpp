@@ -1,16 +1,11 @@
-struct AmbientLight : Light {
-public:
-  Color ac;
-  float ap;
+#include "AmbientLight.hpp"
 
-  AmbientLight( const Color& ac0, const float ap0 = 1 )
-  {
-    ac = ac0;
-    ap = ap0;
-  }
+AmbientLight::AmbientLight(const Color& ac0, const float ap0) {
+  ac = ac0;
+  ap = ap0;
+}
 
-  Lightning light( const Intersection&, const float )
-  {
-    return Lightning( ac*ap, Color(), Color() );
-  }
-};
+Lightning AmbientLight::light(const Intersection&, const float) {
+  return Lightning(ac*ap, Color(), Color());
+}
+
