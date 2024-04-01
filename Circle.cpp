@@ -1,36 +1,32 @@
-struct Circle : Object
-{
-  float r;
+#include "Circle.hpp"
 
-  Circle( Vector* p, Material* m, float r0 )
-    : Object( p, m )
+Circle::Circle(Vector* p, Material* m, float r0)
+  : Object(p, m) {
+  r = r0;
+}
+
+Intersection Circle::intersect(Ray* ray) {
+  Vector N(0, 0, 1);
+
+  if(ray->v.pz == 0)
   {
-    r = r0;
+    return Intersection();
   }
 
-  Intersection intersect( Ray* ray )
+  float l = -ray->p.pz/ray->v.pz;
+
+  Vector p = ray->p + ray->v*l;
+
+  if(p.abs() > r)
   {
-    Vector N( 0, 0, 1 );
-
-    if( ray->v.pz == 0 )
-    {
-      return Intersection();
-    }
-
-    float l = -ray->p.pz/ray->v.pz;
-
-    Vector p = ray->p + ray->v*l;
-
-    if( p.abs() > r )
-    {
-       return Intersection();
-    }
-
-    if( ray->p.pz < 0 )
-    {
-      N.pz = -1;
-    }
-
-    return Intersection( ray->v.normalize(), p, N );
+     return Intersection();
   }
-};
+
+  if(ray->p.pz < 0)
+  {
+    N.pz = -1;
+  }
+
+  return Intersection(ray->v.normalize(), p, N);
+}
+
