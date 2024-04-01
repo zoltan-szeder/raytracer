@@ -1,23 +1,14 @@
-struct Object {
-public:
-  Material* m;
-  Vector* p;
+#include "Object.hpp"
 
-  Object( Vector* p0, Material* m0)
-  {
-    p = p0;
-    m = m0;
-  }
+Object::Object(Vector* p0, Material* m0) {
+  p = p0;
+  m = m0;
+}
 
-  Vector* getPosition()
-  {
-    return p;
-  }
+Vector* Object::getPosition() {
+  return p;
+}
 
-  Material* getMaterial()
-  {
-    return m;
-  }
-
-  virtual Intersection intersect( Ray* r ) = 0;
-};
+Material* Object::getMaterial() {
+  return m;
+}
