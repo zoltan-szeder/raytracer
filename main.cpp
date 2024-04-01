@@ -13,7 +13,7 @@
 #include "Ray.cpp"
 #include "Lightning.cpp"
 #include "Light.hpp"
-#include "Material.cpp"
+#include "Material.hpp"
 #include "Object.cpp"
 #include "Model.cpp"
 
