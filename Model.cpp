@@ -1,74 +1,55 @@
-#define MAXOBJECTS 10
-#define MAXLIGHTS 4
+#include "Model.hpp"
 
-struct Model {
-public:
-  Object* objects[MAXOBJECTS];
-  int p;
+Model::Model() {
+  p = 0;
+  lp = 0;
+}
 
-  Light* lights[MAXLIGHTS];
-  int lp;
+void Model::addObject(Object* o) {
+  objects[p] = o;
+  p++;
+}
 
-  Model()
+Object* Model::getObject(int i) {
+  if(i < 0 || i >= p)
   {
-    p = 0;
-    lp = 0;
+    return NULL;
   }
+  return objects[i];
+}
 
-  void addObject( Object* o )
-  {
-    objects[p] = o;
-    p++;
-  }
+void Model::addLight(Light* l) {
+  lights[lp] = l;
+  lp++;
+}
 
-  Object* getObject( int i )
+Light** Model::getLights() {
+  return lights;
+}
+
+int Model::getLightsNum() {
+  return lp;
+}
+
+Intersection Model::intersect(Ray* r, Object** o) {
+  Intersection min(false);
+
+  for(int i = 0; i < p; i++)
   {
-    if( i < 0 || i >= p )
+    Object* ob = objects[i];
+    Vector* v = ob->getPosition();
+    Ray rc = r->convert(v);
+    Intersection in = ob->intersect(&rc);
+    if(! in.v)
     {
-      return NULL;
+      continue;
     }
-    return objects[i];
-  }
-
-  void addLight( Light* l )
-  {
-    lights[lp] = l;
-    lp++;
-  }
-
-  Light** getLights()
-  {
-    return lights;
-  }
-
-  int getLightsNum()
-  {
-    return lp;
-  }
-
-  Intersection intersect( Ray* r, Object** o )
-  {
-    Intersection min( false );
-
-    for( int i = 0; i < p; i++ )
+    Intersection inc = in.deconvert(v);
+    if(! min.v || (min.p - r->p).abs() > (inc.p - r->p).abs())
     {
-      Object* ob = objects[i];
-      Vector* v = ob->getPosition();
-      Ray rc = r->convert( v );
-      Intersection in = ob->intersect( &rc );
-      if( ! in.v )
-      {
-        continue;
-      }
-      Intersection inc = in.deconvert( v );
-      if( ! min.v || ( min.p - r->p ).abs() > ( inc.p - r->p ).abs() )
-      {
-        min = inc;
-        *o = ob;
-      }
+      min = inc;
+      *o = ob;
     }
-    return min;
   }
-  
-};
-
+  return min;
+}
