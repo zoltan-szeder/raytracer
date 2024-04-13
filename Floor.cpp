@@ -1,21 +1,15 @@
-struct Floor : Object 
-{
-public:
+#include "Floor.hpp"
 
-  Floor( Vector* p0, Material* m0 ) : Object( p0, m0 )
-  {
+Floor::Floor(Vector* p0, Material* m0) : Object(p0, m0) {}
+
+Intersection Floor::intersect(Ray* r) {
+  Vector N(0, 0, 1);
+  if(r->v*N > 0 || r->p.pz < ZERO) {
+    return Intersection();
   }
 
-  Intersection intersect( Ray* r )
-  {
-    Vector N( 0, 0, 1 );
-    if( r->v*N > 0 || r->p.pz < ZERO )
-    {
-      return Intersection();
-    }
+  float l = -r->p.pz/r->v.pz;
 
-    float l = -r->p.pz/r->v.pz;
+  return Intersection(r->v, r->p + r->v*l, N);
+}
 
-    return Intersection( r->v, r->p + r->v*l, N );
-  }
-};
