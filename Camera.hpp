@@ -1,3 +1,6 @@
+#ifndef CAMERA_HPP
+#define CAMERA_HPP
+
 #include "Model.hpp"
 #include "Vector.hpp"
 #include "Screen.hpp"
@@ -21,3 +24,5 @@ public:
 
   Color trace( Ray* r );
 };
+
+#endif

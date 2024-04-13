@@ -1,3 +1,6 @@
+#ifndef FLOOR_HPP
+#define FLOOR_HPP
+
 #include "Object.hpp"
 #include "Intersection.hpp"
 #include "Material.hpp"
@@ -10,3 +13,5 @@ public:
   Floor(Vector* p0, Material* m0);
   Intersection intersect(Ray* r);
 };
+
+#endif
