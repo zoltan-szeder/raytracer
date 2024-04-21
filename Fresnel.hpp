@@ -1,9 +1,10 @@
 #ifndef FRESNEL_HPP
 #define FRESNEL_HPP
 
-#define TTL 5
+#define TTL 15
 
 struct Fresnel : Material {
+  const Camera& camera;
   static int ttl;
 
   Color cd;
@@ -20,7 +21,7 @@ struct Fresnel : Material {
   Color F0;
   
 
-  Fresnel(const Color& n0, const Color& k0, const Color& cd0, const Color& cs0, bool refl0 = true, bool refr0 = true, float shine0 = 64);
+  Fresnel(const Camera& camera0, const Color& n0, const Color& k0, const Color& cd0, const Color& cs0, bool refl0 = true, bool refr0 = true, float shine0 = 64);
 
   Color bounce(const Intersection& in, Light** lights, const int s);
 

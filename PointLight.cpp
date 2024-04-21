@@ -1,8 +1,10 @@
 #include "PointLight.hpp"
 
 PointLight::PointLight(
+  const Model& model,
   const Vector& p0, const Color& dc0, const Color& sc0,
-  const float dp0, const float sp0)
+  const float dp0, const float sp0) :
+  model(model)
 {
   p = p0;
   dc = dc0;

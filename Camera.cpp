@@ -49,7 +49,7 @@ void Camera::render() {
   }
 }
 
-Color Camera::trace(Ray* r) {
+Color Camera::trace(Ray* r) const {
   Object* o[1];
   o[0] = NULL;
   Intersection in = model->intersect(r, o);

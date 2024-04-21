@@ -1,6 +1,6 @@
 #include "Fresnel.hpp"
 
-Fresnel::Fresnel(const Color& n0, const Color& k0, const Color& cd0, const Color& cs0, bool refl0, bool refr0, float shine0) {
+Fresnel::Fresnel(const Camera& camera0, const Color& n0, const Color& k0, const Color& cd0, const Color& cs0, bool refl0, bool refr0, float shine0) : camera(camera0) {
   n = n0;
   k = k0;
 

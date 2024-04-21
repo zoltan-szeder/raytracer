@@ -20,16 +20,6 @@
 #include "Screen.cpp"
 #include "Camera.cpp"
 
-Vector origo;
-Screen screen;
-Model model;
-Camera camera(
-  &model,
-  Vector(30, 35, 15),
-  Vector(0, 0, 5),
-  &screen
-);
-
 float frand(float min, float max) {
   return (max-min)*rand()/RAND_MAX + min;
 }
@@ -47,8 +37,18 @@ float frand(float min, float max) {
 #include "Tube.cpp"
 #include "Floor.cpp"
 
+Vector origo;
+Screen screen;
+Model model;
+Camera camera(
+  &model,
+  Vector(30, 35, 15),
+  Vector(0, 0, 5),
+  &screen
+);
+
 void initialize() {
-  srand(8762);
+  srand(8777);
 
   // Create ambient lighting
   AmbientLight l0(
@@ -59,6 +59,7 @@ void initialize() {
 
   // Create light red point light
   PointLight l1(
+    model,
     Vector(50,  50, 40), Color(1, 0.5, 0.5), Color(1, 0.5, 0.5),
     3000, 6000
   );
@@ -66,6 +67,7 @@ void initialize() {
 
   // Create light green point light
   PointLight l2(
+    model,
     Vector(-50,  50, 40), Color(0.5, 1, 0.5), Color(0.5, 1, 0.5),
     3000, 6000
   );
@@ -73,6 +75,7 @@ void initialize() {
 
   // Create light blue point light
   PointLight l3(
+    model,
     Vector(-20, -70, 40), Color(0.5, 0.5, 1), Color(0.5, 0.5, 1),
     3000, 6000
   );
@@ -86,6 +89,7 @@ void initialize() {
 
   // Create Gold Spheres
   Fresnel gold(
+    camera,
     Color(0.17, 0.35, 1.5), Color(3.1, 2.7, 1.9),
     Color(0.27, 0.16, 0.0), Color(1, 0.94, 0.84),
     true, false
@@ -107,6 +111,7 @@ void initialize() {
 
   // Create Silver Paraboloids
   Fresnel silver(
+    camera,
     Color(0.14, 0.16, 0.13), Color(4.1, 2.3, 3.1),
     Color(0.2, 0.2, 0.2), Color(1, 1, 1),
     true, false
@@ -128,6 +133,7 @@ void initialize() {
 
   // Create Glass Tubes
   Fresnel glass(
+    camera,
     Color(1.5, 1.5, 1.5), Color(0.0, 0.0, 0.0),
     Color(0.0, 0.0, 0.0), Color(1, 1, 1),
     false, true

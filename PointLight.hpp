@@ -7,6 +7,7 @@
 
 struct PointLight : Light {
 public:
+  const Model& model;
   Vector p;
   Color dc;
   float dp;
@@ -14,6 +15,7 @@ public:
   float sp;
 
   PointLight(
+    const Model& model0,
     const Vector& p0, const Color& dc0, const Color& sc0,
     const float dp0 = 1, const float sp0 = 1
   );

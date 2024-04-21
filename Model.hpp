@@ -29,7 +29,7 @@ public:
 
   int getLightsNum();
 
-  Intersection intersect(Ray* r, Object** o);
+  Intersection intersect(Ray* r, Object** o) const;
 };
 
 #endif

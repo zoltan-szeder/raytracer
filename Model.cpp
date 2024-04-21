@@ -31,7 +31,7 @@ int Model::getLightsNum() {
   return lp;
 }
 
-Intersection Model::intersect(Ray* r, Object** o) {
+Intersection Model::intersect(Ray* r, Object** o) const {
   Intersection min(false);
 
   for(int i = 0; i < p; i++)

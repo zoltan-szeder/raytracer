@@ -22,7 +22,7 @@ public:
 
   void render();
 
-  Color trace( Ray* r );
+  Color trace( Ray* r ) const;
 };
 
 #endif
