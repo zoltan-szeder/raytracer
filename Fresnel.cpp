@@ -91,3 +91,5 @@ Intersection Fresnel::refract(const Intersection& in) {
   Vector v = V/ncurr.r + N*(costheta/ncurr.r - sqrt(d));
   return Intersection(v, in.p, N);
 }
+
+int Fresnel::ttl = TTL;

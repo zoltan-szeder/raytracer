@@ -1,6 +1,7 @@
 #ifndef SPHERE_HPP
 #define SPHERE_HPP
 
+#include "Object.hpp"
 #include "Vector.hpp"
 #include "Material.hpp"
 #include "Intersection.hpp"

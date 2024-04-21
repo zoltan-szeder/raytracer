@@ -5,37 +5,33 @@
 #include <math.h>
 #include <stdlib.h>
 
-#define ZERO 0.0001
+#include "Math.hpp"
 
-#include "Color.cpp"
-#include "Vector.cpp"
-#include "Intersection.cpp"
-#include "Ray.cpp"
-#include "Lightning.cpp"
+#include "Color.hpp"
+#include "Vector.hpp"
+#include "Intersection.hpp"
+#include "Ray.hpp"
+#include "Lightning.hpp"
 #include "Light.hpp"
 #include "Material.hpp"
-#include "Object.cpp"
-#include "Model.cpp"
+#include "Object.hpp"
+#include "Model.hpp"
 
-#include "Screen.cpp"
-#include "Camera.cpp"
+#include "Screen.hpp"
+#include "Camera.hpp"
 
-float frand(float min, float max) {
-  return (max-min)*rand()/RAND_MAX + min;
-}
+#include "DiffuseBlinn.hpp"
+#include "Fresnel.hpp"
+#include "FloorMaterial.hpp"
 
-#include "DiffuseBlinn.cpp"
-#include "Fresnel.cpp"
-#include "FloorMaterial.cpp"
+#include "AmbientLight.hpp"
+#include "PointLight.hpp"
 
-#include "AmbientLight.cpp"
-#include "PointLight.cpp"
-
-#include "Circle.cpp"
-#include "Sphere.cpp"
-#include "Paraboloid.cpp"
-#include "Tube.cpp"
-#include "Floor.cpp"
+#include "Circle.hpp"
+#include "Sphere.hpp"
+#include "Paraboloid.hpp"
+#include "Tube.hpp"
+#include "Floor.hpp"
 
 Vector origo;
 Screen screen;

@@ -1,4 +1,5 @@
 #include "Paraboloid.hpp"
+#include "Math.hpp"
 
 Paraboloid::Paraboloid(Vector* p0, Material* m0, float r0)
   : Object(p0, m0),

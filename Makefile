@@ -8,5 +8,7 @@ OUT = raytracer
 SET = -finput-charset=latin2 -std=c++98 -Wall -Wextra -g
 FIN = *.cpp
 
+SRCS := $(wildcard *.cpp)
+
 build:
-	$(CPP) $(LIB) $(SET) $(SRC) -o $(OUT)
+	$(CPP) $(LIB) $(SET) $(SRCS) -o $(OUT)

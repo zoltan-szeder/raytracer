@@ -1,6 +1,12 @@
 #ifndef FRESNEL_HPP
 #define FRESNEL_HPP
 
+#include "Material.hpp"
+#include "Camera.hpp"
+#include "Color.hpp"
+#include "Intersection.hpp"
+
+
 #define TTL 15
 
 struct Fresnel : Material {
@@ -33,7 +39,5 @@ struct Fresnel : Material {
 
   Intersection refract(const Intersection& in);
 };
-
-int Fresnel::ttl = TTL;
 
 #endif

@@ -4,6 +4,7 @@
 #include "Light.hpp"
 #include "Vector.hpp"
 #include "Color.hpp"
+#include "Model.hpp"
 
 struct PointLight : Light {
 public:
