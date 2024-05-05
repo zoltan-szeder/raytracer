@@ -37,9 +37,9 @@ void Sphere::createChild(Sphere* sphere) {
   Vector* v = sphere->p;
   Vector n = v->normalize();
 
-  *v = n*1.5*rad;
+  *v = n*1.5*this->rad;
 
-  *v = p->deconvert(v);
+  *v = this->p->deconvert(v);
 
   v->rz = (n.py >= 0 ? acos(n.px) : -acos(n.px));
   float sinphi = sqrt(1 - n.px*n.px);
@@ -53,9 +53,17 @@ void Sphere::createChild(Sphere* sphere) {
 
   v->parent = NULL;
 
-  sphere->rad = rad/2.0;
+  sphere->rad = this->rad/2.0;
 }
 
+Sphere Sphere::createChild(Vector* direction, float scale) {
+    float sphereRadius = this->rad * scale;
+
+    *direction = direction->normalize();
+    *direction = *direction * (this->rad + sphereRadius) + *(this->p);
+
+    return Sphere(direction, this->m, sphereRadius);
+}
 
 
 

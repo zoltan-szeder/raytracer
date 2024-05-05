@@ -1,14 +1,13 @@
-LINT = cppcheck
-SW = --enable=all
-CPP = g++
 LIB = -lm -lGL -lGLU -lglut
 SRC = main.cpp
-EXTENSIONS = --check-config
 OUT = raytracer
 SET = -finput-charset=latin2 -std=c++98 -Wall -Wextra -g
-FIN = *.cpp
 
 SRCS := $(wildcard *.cpp)
+OBJS := $(patsubst %.cpp,%.o,$(SRCS)) 
 
-build:
-	$(CPP) $(LIB) $(SET) $(SRCS) -o $(OUT)
+%.o: %.cpp
+	$(CXX) $(SET) -c $<
+
+raytracer: $(OBJS)
+	$(CXX) $(LIB) $(SET) -o $(@) $^

@@ -95,14 +95,12 @@ void initialize() {
   Sphere sphere0(&sphere0center, &gold, 5);
   model.addObject(&sphere0);
 
-  Vector sphere1center(frand(-1, 1), frand(-1, 1), frand(0, 1));
-  Sphere sphere1(&sphere1center, &gold, 5);
-  sphere0.createChild(&sphere1);
+  Vector sphere1direction(1, 1.3, 1);
+  Sphere sphere1 = sphere0.createChild(&sphere1direction, 0.5);
   model.addObject(&sphere1);
 
-  Vector sphere2center(frand(-1, 1), frand(-1, 1), frand(0, 1));
-  Sphere sphere2(&sphere2center, &gold, 5);
-  sphere1.createChild(&sphere2);
+  Vector sphere2direction(-1, 1, 0.9);
+  Sphere sphere2 = sphere1.createChild(&sphere2direction, 0.5);
   model.addObject(&sphere2);
 
   // Create Silver Paraboloids

@@ -14,6 +14,7 @@ public:
   Sphere(Vector* p0, Material* m0, float rad0 = 1);
   Intersection intersect(Ray* r);
   void createChild(Sphere* sphere);
+  Sphere createChild(Vector* direction, float scale);
 };
 
 #endif
